@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hanout60 - اتصل بنا</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #2c3e50;
+            --secondary: #e74c3c;
+            --accent: #3498db;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --text: #333;
+            --text-light: #777;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-left: 10px;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--secondary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 40vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+        }
+
+        .page-header h2 {
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background-color: var(--secondary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .contact-content {
+            display: flex;
+            gap: 50px;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-form {
+            flex: 1;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+
+        .contact-icon {
+            background-color: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 15px;
+            flex-shrink: 0;
+        }
+
+        .contact-details h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+
+        .contact-details p {
+            color: var(--text-light);
+        }
+
+        .social-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            min-width: 140px;
+        }
+
+        .social-btn i {
+            margin-left: 8px;
+        }
+
+        .whatsapp-btn {
+            background-color: #25D366;
+            color: white;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .facebook-btn {
+            background-color: #1877F2;
+            color: white;
+        }
+
+        .facebook-btn:hover {
+            background-color: #0D5FD6;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .email-btn {
+            background-color: #EA4335;
+            color: white;
+        }
+
+        .email-btn:hover {
+            background-color: #D33426;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: var(--accent);
+            outline: none;
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .loading i {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+
+        .faq-item {
+            background-color: white;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s, padding 0.3s;
+        }
+
+        .faq-answer.active {
+            padding: 0 20px 20px;
+            max-height: 500px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary);
+            bottom: 0;
+            right: 0;
+        }
+
+        .footer-column p {
+            margin-bottom: 15px;
+            color: #ccc;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .contact-content {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                width: 80%;
+                height: calc(100vh - 80px);
+                background-color: var(--primary);
+                transition: right 0.3s;
+                padding: 20px;
+            }
+            
+            nav.active {
+                right: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 0 0 20px 0;
+            }
+            
+            .page-header h2 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .social-buttons {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .page-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .btn, .social-btn {
+                padding: 10px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div style="width: 50px; height: 50px; background-color: #e74c3c; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; border-radius: 5px;">H60</div>
+                    <h1>Hanout60</h1>
+                </div>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="about.html">من نحن</a></li>
+                        <li><a href="products.html">منتجاتنا</a></li>
+                        <li><a href="why-choose-us.html">لماذا تختارنا</a></li>
+                        <li><a href="cart.html">سلة التسوق</a></li>
+                        <li><a href="contact.html" class="active">اتصل بنا</a></li>
+                        <li><a href="location.html">موقعنا</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h2>اتصل بنا</h2>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>تواصل معنا</h2>
+                <p>نحن هنا للإجابة على استفساراتك ومساعدتك في اختيار المنتج المناسب</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>عنوان المتجر</h3>
+                            <p>مركز تسوق سوق الفلاح، N90، تيارت، الجزائر</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>هاتف</h3>
+                            <p>0770837774</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>البريد الإلكتروني</h3>
+                            <p>Boutelisbenmazouz@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>ساعات العمل</h3>
+                            <p>السبت - الخميس: 9:00 ص - 8:00 م<br>الجمعة: 2:00 م - 8:00 م</p>
+                        </div>
+                    </div>
+
+                    <!-- أزرار التواصل الاجتماعي -->
+                    <div class="social-buttons">
+                        <a href="https://wa.me/213770837774" class="social-btn whatsapp-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                            واتساب
+                        </a>
+                        <a href="https://www.facebook.com/bmazouz" class="social-btn facebook-btn" target="_blank">
+                            <i class="fab fa-facebook-f"></i>
+                            فيسبوك
+                        </a>
+                        <a href="mailto:Boutelisbenmazouz@gmail.com" class="social-btn email-btn">
+                            <i class="fas fa-envelope"></i>
+                            إيميل
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">الاسم الأول *</label>
+                                <input type="text" id="firstName" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">اللقب *</label>
+                                <input type="text" id="lastName" class="form-control" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">رقم الهاتف *</label>
+                            <input type="tel" id="phone" class="form-control" required placeholder="مثال: 0770837774">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">البريد الإلكتروني</label>
+                            <input type="email" id="email" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="wilaya">الولاية *</label>
+                            <select id="wilaya" class="form-control" required>
+                                <option value="">اختر الولاية</option>
+                                <option value="أدرار">أدرار</option>
+                                <option value="الشلف">الشلف</option>
+                                <option value="الأغواط">الأغواط</option>
+                                <option value="أم البواقي">أم البواقي</option>
+                                <option value="باتنة">باتنة</option>
+                                <option value="بجاية">بجاية</option>
+                                <option value="بسكرة">بسكرة</option>
+                                <option value="بشار">بشار</option>
+                                <option value="البليدة">البليدة</option>
+                                <option value="البويرة">البويرة</option>
+                                <option value="تمنراست">تمنراست</option>
+                                <option value="تبسة">تبسة</option>
+                                <option value="تلمسان">تلمسان</option>
+                                <option value="تيارت">تيارت</option>
+                                <option value="تيزي وزو">تيزي وزو</option>
+                                <option value="الجزائر">الجزائر</option>
+                                <option value="الجلفة">الجلفة</option>
+                                <option value="جيجل">جيجل</option>
+                                <option value="سطيف">سطيف</option>
+                                <option value="سعيدة">سعيدة</option>
+                                <option value="سكيكدة">سكيكدة</option>
+                                <option value="سيدي بلعباس">سيدي بلعباس</option>
+                                <option value="عنابة">عنابة</option>
+                                <option value="قالمة">قالمة</option>
+                                <option value="قسنطينة">قسنطينة</option>
+                                <option value="المدية">المدية</option>
+                                <option value="مستغانم">مستغانم</option>
+                                <option value="المسيلة">المسيلة</option>
+                                <option value="معسكر">معسكر</option>
+                                <option value="ورقلة">ورقلة</option>
+                                <option value="وهران">وهران</option>
+                                <option value="البيض">البيض</option>
+                                <option value="إليزي">إليزي</option>
+                                <option value="برج بوعريريج">برج بوعريريج</option>
+                                <option value="بومرداس">بومرداس</option>
+                                <option value="الطارف">الطارف</option>
+                                <option value="تندوف">تندوف</option>
+                                <option value="تيسمسيلت">تيسمسيلت</option>
+                                <option value="الوادي">الوادي</option>
+                                <option value="خنشلة">خنشلة</option>
+                                <option value="سوق أهراس">سوق أهراس</option>
+                                <option value="تيبازة">تيبازة</option>
+                                <option value="ميلة">ميلة</option>
+                                <option value="عين الدفلى">عين الدفلى</option>
+                                <option value="النعامة">النعامة</option>
+                                <option value="عين تموشنت">عين تموشنت</option>
+                                <option value="غرداية">غرداية</option>
+                                <option value="غليزان">غليزان</option>
+                                <option value="تيميمون">تيميمون</option>
+                                <option value="برج باجي مختار">برج باجي مختار</option>
+                                <option value="أولاد جلال">أولاد جلال</option>
+                                <option value="بني عباس">بني عباس</option>
+                                <option value="عين صالح">عين صالح</option>
+                                <option value="عين قزام">عين قزام</option>
+                                <option value="تقرت">تقرت</option>
+                                <option value="جانت">جانت</option>
+                                <option value="المغير">المغير</option>
+                                <option value="المنيعة">المنيعة</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="baladia">البلدية *</label>
+                            <input type="text" id="baladia" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">الرسالة *</label>
+                            <textarea id="message" class="form-control" rows="5" required placeholder="اكتب رسالتك هنا..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn" id="submit-btn">إرسال الرسالة</button>
+                        <div class="loading" id="loading">
+                            <i class="fas fa-spinner"></i> جاري إرسال الرسالة...
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>الأسئلة الشائعة</h2>
+                <p>إجابات على الأسئلة الأكثر شيوعاً من عملائنا</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>ما هي طرق الدفع المتاحة؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>نقبل الدفع النقدي عند الاستلام، بالإضافة إلى التحويل البنكي وبطاقات الائتمان والدفع الإلكتروني.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>هل تقدمون خدمة التوصيل؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>نعم، نقدم خدمة التوصيل لجميع أنحاء تيارت مجاناً، وللمدن الأخرى برسوم توصيل تختلف حسب المنطقة.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>ما هي سياسة الاستبدال والاسترجاع؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>يمكنك استبدال أو استرجاع المنتج خلال 7 أيام من تاريخ الشراء، بشرط أن يكون المنتج بحالته الأصلية وغير مستخدم.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>هل تقدمون ضمان على المنتجات؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>نعم، جميع منتجاتنا تأتي بضمان يتراوح بين 3 أشهر إلى سنة حسب نوع المنتج وجودة التصنيع.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Hanout60</h3>
+                    <p>متجر متخصص في بيع الأحذية بأنواعها المختلفة، نقدم تشكيلة واسعة من أحدث الموديلات والأشكال التي تناسب جميع الأذواق والمناسبات.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/bmazouz" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://wa.me/213770837774" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="mailto:Boutelisbenmazouz@gmail.com"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>روابط سريعة</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="about.html">من نحن</a></li>
+                        <li><a href="products.html">منتجاتنا</a></li>
+                        <li><a href="why-choose-us.html">لماذا تختارنا</a></li>
+                        <li><a href="cart.html">سلة التسوق</a></li>
+                        <li><a href="contact.html">اتصل بنا</a></li>
+                        <li><a href="location.html">موقعنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>معلومات الاتصال</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> مركز تسوق سوق الفلاح، N90، تيارت</p>
+                    <p><i class="fas fa-phone"></i> 0770837774</p>
+                    <p><i class="fas fa-envelope"></i> Boutelisbenmazouz@gmail.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>جميع الحقوق محفوظة &copy; 2025 Hanout60</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+            });
+        });
+
+        // Telegram Bot Configuration
+        const TELEGRAM_BOT_TOKEN = '8149107740:AAHr6-Lk3CAvC8MxWp_afS5SpCUqq-xE0gI';
+        const TELEGRAM_CHAT_ID = '6245150338';
+
+        // Send contact form to Telegram
+        async function sendContactToTelegram(formData) {
+            const submitBtn = document.getElementById('submit-btn');
+            const loading = document.getElementById('loading');
+            
+            submitBtn.disabled = true;
+            loading.style.display = 'block';
+            
+            try {
+                const message = `
+📞 رسالة تواصل جديدة من Hanout60
+
+👤 معلومات المرسل:
+• الاسم: ${formData.firstName} ${formData.lastName}
+• الهاتف: ${formData.phone}
+• البريد الإلكتروني: ${formData.email || 'لم يتم تقديمه'}
+• الولاية: ${formData.wilaya}
+• البلدية: ${formData.baladia}
+
+💬 الرسالة:
+${formData.message}
+
+⏰ الوقت: ${new Date().toLocaleString('ar-EG')}
+                `.trim();
+                
+                const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: TELEGRAM_CHAT_ID,
+                        text: message,
+                        parse_mode: 'HTML'
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.ok) {
+                    alert('✅ تم إرسال رسالتك بنجاح! سنرد عليك في أقرب وقت ممكن.');
+                    document.getElementById('contactForm').reset();
+                } else {
+                    throw new Error('فشل في إرسال الرسالة');
+                }
+                
+            } catch (error) {
+                console.error('Error sending to Telegram:', error);
+                alert('❌ حدث خطأ في إرسال الرسالة. يرجى المحاولة مرة أخرى أو الاتصال بنا مباشرة.');
+            } finally {
+                submitBtn.disabled = false;
+                loading.style.display = 'none';
+            }
+        }
+
+        // Handle form submission
+        document.getElementById('contactForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                wilaya: document.getElementById('wilaya').value,
+                baladia: document.getElementById('baladia').value,
+                message: document.getElementById('message').value
+            };
+            
+            // Basic validation
+            if (!formData.firstName || !formData.lastName || !formData.phone || !formData.wilaya || !formData.baladia || !formData.message) {
+                alert('يرجى ملء جميع الحقول الإلزامية (*)');
+                return;
+            }
+            
+            // Phone validation
+            const phoneRegex = /^(\+213|0)(5|6|7)[0-9]{8}$/;
+            if (!phoneRegex.test(formData.phone.replace(/\s/g, ''))) {
+                alert('يرجى إدخال رقم هاتف جزائري صحيح');
+                return;
+            }
+            
+            await sendContactToTelegram(formData);
+        });
+
+        // FAQ Toggle
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                answer.classList.toggle('active');
+                
+                const icon = question.querySelector('i');
+                if (answer.classList.contains('active')) {
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                } else {
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

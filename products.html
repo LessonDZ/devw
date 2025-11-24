@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hanout60 - منتجاتنا</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #2c3e50;
+            --secondary: #e74c3c;
+            --accent: #3498db;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --text: #333;
+            --text-light: #777;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-left: 10px;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--secondary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1460353581641-37baddab0fa2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 40vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+        }
+
+        .page-header h2 {
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Categories Filter */
+        .categories-filter {
+            background-color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 80px;
+            z-index: 999;
+        }
+
+        .categories-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .category-btn {
+            background-color: var(--light);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .category-btn:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .category-btn.active {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background-color: var(--secondary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .product-info p {
+            color: var(--text-light);
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .product-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price {
+            font-weight: 700;
+            color: var(--secondary);
+            font-size: 1.2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .add-to-cart-btn {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .add-to-cart-btn.added {
+            background-color: #27ae60;
+        }
+
+        .add-to-cart-btn.added:hover {
+            background-color: #219653;
+        }
+
+        /* Product Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 50px auto;
+            width: 90%;
+            max-width: 900px;
+            border-radius: 10px;
+            overflow: hidden;
+            animation: modalFade 0.3s;
+        }
+
+        @keyframes modalFade {
+            from {opacity: 0; transform: translateY(-50px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            font-size: 1.5rem;
+            color: white;
+            cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.5);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2001;
+        }
+
+        .product-details {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .product-details-image {
+            flex: 1;
+            min-width: 300px;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .product-details-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-details-info {
+            flex: 1;
+            min-width: 300px;
+            padding: 30px;
+        }
+
+        .product-details-info h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .product-details-info .price {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .product-details-info p {
+            margin-bottom: 25px;
+            color: var(--text-light);
+        }
+
+        .options-section {
+            margin-bottom: 25px;
+        }
+
+        .options-section h3 {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .sizes-list, .colors-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .size-option, .color-option {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .size-option:hover, .color-option:hover {
+            border-color: var(--accent);
+        }
+
+        .size-option.selected, .color-option.selected {
+            background-color: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .color-option {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            padding: 0;
+            position: relative;
+        }
+
+        .color-option.selected::after {
+            content: '✓';
+            color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.8rem;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .quantity-btn {
+            width: 40px;
+            height: 40px;
+            background-color: var(--light);
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .quantity-btn:hover {
+            background-color: #ddd;
+        }
+
+        .quantity-input {
+            width: 60px;
+            height: 40px;
+            text-align: center;
+            border: 1px solid #ddd;
+            margin: 0 5px;
+            font-size: 1rem;
+        }
+
+        /* Categories Section */
+        .categories {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .category-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+            text-align: center;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .category-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .category-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .category-card:hover .category-image img {
+            transform: scale(1.1);
+        }
+
+        .category-info {
+            padding: 20px;
+        }
+
+        .category-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary);
+            bottom: 0;
+            right: 0;
+        }
+
+        .footer-column p {
+            margin-bottom: 15px;
+            color: #ccc;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                width: 80%;
+                height: calc(100vh - 80px);
+                background-color: var(--primary);
+                transition: right 0.3s;
+                padding: 20px;
+            }
+            
+            nav.active {
+                right: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 0 0 20px 0;
+            }
+            
+            .page-header h2 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .product-details {
+                flex-direction: column;
+            }
+            
+            .product-details-image {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .page-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .btn {
+                padding: 8px 18px;
+            }
+            
+            .categories-list {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <!-- سيتم استبدال هذا باللوجو الفعلي -->
+                    <div style="width: 50px; height: 50px; background-color: #e74c3c; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; border-radius: 5px;">H60</div>
+                    <h1>Hanout60</h1>
+                </div>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="about.html">من نحن</a></li>
+                        <li><a href="products.html" class="active">منتجاتنا</a></li>
+                        <li><a href="why-choose-us.html">لماذا تختارنا</a></li>
+                        <li><a href="cart.html">سلة التسوق</a></li>
+                        <li><a href="contact.html">اتصل بنا</a></li>
+                        <li><a href="location.html">موقعنا</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h2>منتجاتنا</h2>
+        </div>
+    </section>
+
+    <!-- Categories Filter -->
+    <section class="categories-filter">
+        <div class="container">
+            <div class="categories-list">
+                <button class="category-btn active" data-category="all">الكل</button>
+                <button class="category-btn" data-category="winter">أحذية شتوية</button>
+                <button class="category-btn" data-category="summer">أحذية صيفية</button>
+                <button class="category-btn" data-category="sports">أحذية رياضية</button>
+                <button class="category-btn" data-category="classic">أحذية كلاسيكية</button>
+                <button class="category-btn" data-category="men">أحذية رجالية</button>
+                <button class="category-btn" data-category="women">أحذية نسائية</button>
+                <button class="category-btn" data-category="kids">أحذية أطفال</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>تشكيلة الأحذية</h2>
+                <p>اكتشف تشكيلتنا المميزة من الأحذية بأحدث الموديلات والأشكال</p>
+            </div>
+            <div class="products-grid">
+                <!-- سيتم إضافة المنتجات ديناميكياً باستخدام JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Details Modal -->
+    <div class="modal" id="productModal">
+        <div class="close-modal">
+            <i class="fas fa-times"></i>
+        </div>
+        <div class="modal-content">
+            <div class="product-details">
+                <div class="product-details-image">
+                    <img id="modalProductImage" src="" alt="صورة المنتج">
+                </div>
+                <div class="product-details-info">
+                    <h2 id="modalProductName"></h2>
+                    <div class="price" id="modalProductPrice"></div>
+                    <p id="modalProductDescription"></p>
+                    
+                    <div class="options-section">
+                        <h3>المقاسات المتوفرة</h3>
+                        <div class="sizes-list" id="sizesList">
+                            <!-- سيتم إضافة المقاسات ديناميكياً -->
+                        </div>
+                    </div>
+                    
+                    <div class="options-section">
+                        <h3>الألوان المتوفرة</h3>
+                        <div class="colors-list" id="colorsList">
+                            <!-- سيتم إضافة الألوان ديناميكياً -->
+                        </div>
+                    </div>
+                    
+                    <div class="options-section">
+                        <h3>الكمية</h3>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" id="decreaseQuantity">-</button>
+                            <input type="number" class="quantity-input" id="quantityInput" value="1" min="1" max="10">
+                            <button class="quantity-btn" id="increaseQuantity">+</button>
+                        </div>
+                    </div>
+                    
+                    <button class="btn add-to-cart-btn" id="modalAddToCart">أضف إلى السلة</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="container">
+            <div class="section-title">
+                <h2>فئات المنتجات</h2>
+                <p>تصفح منتجاتنا حسب الفئة التي تهمك</p>
+            </div>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1112&q=80" alt="أحذية رياضية">
+                    </div>
+                    <div class="category-info">
+                        <h3>أحذية رياضية</h3>
+                        <button class="btn category-link" data-category="sports">استعرض</button>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=998&q=80" alt="أحذية رسمية">
+                    </div>
+                    <div class="category-info">
+                        <h3>أحذية رسمية</h3>
+                        <button class="btn category-link" data-category="classic">استعرض</button>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1605348532760-6753d2c43329?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1090&q=80" alt="أحذية نسائية">
+                    </div>
+                    <div class="category-info">
+                        <h3>أحذية نسائية</h3>
+                        <button class="btn category-link" data-category="women">استعرض</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Hanout60</h3>
+                    <p>متجر متخصص في بيع الأحذية بأنواعها المختلفة، نقدم تشكيلة واسعة من أحدث الموديلات والأشكال التي تناسب جميع الأذواق والمناسبات.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/bmazouz" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://wa.me/213770837774" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="mailto:Boutelisbenmazouz@gmail.com"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>روابط سريعة</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="about.html">من نحن</a></li>
+                        <li><a href="products.html">منتجاتنا</a></li>
+                        <li><a href="why-choose-us.html">لماذا تختارنا</a></li>
+                        <li><a href="cart.html">سلة التسوق</a></li>
+                        <li><a href="contact.html">اتصل بنا</a></li>
+                        <li><a href="location.html">موقعنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>معلومات الاتصال</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> مركز تسوق سوق الفلاح، N90، تيارت</p>
+                    <p><i class="fas fa-phone"></i> 0770837774</p>
+                    <p><i class="fas fa-envelope"></i> Boutelisbenmazouz@gmail.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>جميع الحقوق محفوظة &copy; 2025 Hanout60</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // بيانات المنتجات
+        const products = [
+            {
+                id: 1,
+                name: "حذاء رياضي",
+                description: "أحذية مريحة ومناسبة للأنشطة الرياضية واليومية، مصممة بتقنيات عالية للراحة والدعم.",
+                price: 3500,
+                image: "https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1112&q=80",
+                category: "sports",
+                sizes: ["38", "39", "40", "41", "42", "43", "44"],
+                colors: ["#2c3e50", "#e74c3c", "#3498db", "#f1c40f"]
+            },
+            {
+                id: 2,
+                name: "حذاء رسمي",
+                description: "أحذية أنيقة ومناسبة للمناسبات الرسمية والعمل، مصنوعة من أجود أنواع الجلود.",
+                price: 4500,
+                image: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=998&q=80",
+                category: "classic",
+                sizes: ["39", "40", "41", "42", "43"],
+                colors: ["#2c3e50", "#7f8c8d", "#e74c3c"]
+            },
+            {
+                id: 3,
+                name: "حذاء صيفي",
+                description: "أحذية مريحة وخفيفة مناسبة للصيف، متوفرة بألوان وأنماط متنوعة تناسب جميع الأذواق.",
+                price: 2800,
+                image: "https://images.unsplash.com/photo-1529810313688-44ea1c2d81d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1112&q=80",
+                category: "summer",
+                sizes: ["38", "39", "40", "41", "42"],
+                colors: ["#3498db", "#f1c40f", "#2ecc71", "#e74c3c"]
+            },
+            {
+                id: 4,
+                name: "أحذية أطفال",
+                description: "تشكيلة مميزة من الأحذية المناسبة للأطفال، مريحة وآمنة ومصممة بألوان جذابة.",
+                price: 2200,
+                image: "https://images.unsplash.com/photo-1605812860427-4024433a70fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1035&q=80",
+                category: "kids",
+                sizes: ["28", "30", "32", "34", "36"],
+                colors: ["#e74c3c", "#3498db", "#f1c40f", "#2ecc71"]
+            },
+            {
+                id: 5,
+                name: "أحذية نسائية",
+                description: "تشكيلة واسعة من الأحذية النسائية العصرية والأنيقة، تناسب جميع المناسبات والأذواق.",
+                price: 3200,
+                image: "https://images.unsplash.com/photo-1605348532760-6753d2c43329?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1090&q=80",
+                category: "women",
+                sizes: ["36", "37", "38", "39", "40"],
+                colors: ["#e74c3c", "#2c3e50", "#9b59b6", "#f1c40f"]
+            },
+            {
+                id: 6,
+                name: "أحذية شتوية",
+                description: "أحذية دافئة ومقاومة للماء، مثالية لفصل الشتاء، مصممة للحماية من البرد والأمطار.",
+                price: 3800,
+                image: "https://images.unsplash.com/photo-1627637454033-52c6e9684465?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+                category: "winter",
+                sizes: ["39", "40", "41", "42", "43", "44"],
+                colors: ["#2c3e50", "#7f8c8d", "#e74c3c"]
+            },
+            {
+                id: 7,
+                name: "حذاء رجالي كلاسيكي",
+                description: "أحذية رجالية كلاسيكية أنيقة، مصنوعة من الجلد الطبيعي وتناسب المناسبات الرسمية.",
+                price: 4200,
+                image: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+                category: "men",
+                sizes: ["40", "41", "42", "43", "44", "45"],
+                colors: ["#2c3e50", "#7f8c8d", "#34495e"]
+            },
+            {
+                id: 8,
+                name: "حذاء نسائي صيفي",
+                description: "أحذية نسائية صيفية خفيفة ومريحة، مثالية للاستخدام اليومي في فصل الصيف.",
+                price: 2900,
+                image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80",
+                category: "women",
+                sizes: ["36", "37", "38", "39"],
+                colors: ["#e74c3c", "#f1c40f", "#9b59b6", "#2ecc71"]
+            }
+        ];
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+            });
+        });
+
+        // عرض المنتجات حسب الفئة
+        function displayProducts(category = 'all') {
+            const productsGrid = document.querySelector('.products-grid');
+            productsGrid.innerHTML = '';
+            
+            const filteredProducts = category === 'all' 
+                ? products 
+                : products.filter(product => product.category === category);
+            
+            filteredProducts.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.innerHTML = `
+                    <div class="product-image">
+                        <img src="${product.image}" alt="${product.name}">
+                    </div>
+                    <div class="product-info">
+                        <h3>${product.name}</h3>
+                        <p>${product.description}</p>
+                        <div class="product-price">
+                            <span class="price">${product.price} د.ج</span>
+                            <button class="btn view-details-btn" 
+                                    data-id="${product.id}">
+                                عرض التفاصيل
+                            </button>
+                        </div>
+                    </div>
+                `;
+                productsGrid.appendChild(productCard);
+            });
+            
+            // إضافة event listeners لأزرار عرض التفاصيل
+            const viewDetailsButtons = document.querySelectorAll('.view-details-btn');
+            viewDetailsButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const productId = this.getAttribute('data-id');
+                    openProductModal(productId);
+                });
+            });
+        }
+
+        // فتح نافذة تفاصيل المنتج
+        function openProductModal(productId) {
+            const product = products.find(p => p.id == productId);
+            if (!product) return;
+            
+            document.getElementById('modalProductImage').src = product.image;
+            document.getElementById('modalProductName').textContent = product.name;
+            document.getElementById('modalProductPrice').textContent = `${product.price} د.ج`;
+            document.getElementById('modalProductDescription').textContent = product.description;
+            
+            // عرض المقاسات
+            const sizesList = document.getElementById('sizesList');
+            sizesList.innerHTML = '';
+            product.sizes.forEach(size => {
+                const sizeOption = document.createElement('div');
+                sizeOption.className = 'size-option';
+                sizeOption.textContent = size;
+                sizeOption.addEventListener('click', function() {
+                    document.querySelectorAll('.size-option').forEach(opt => opt.classList.remove('selected'));
+                    this.classList.add('selected');
+                });
+                sizesList.appendChild(sizeOption);
+            });
+            
+            // عرض الألوان
+            const colorsList = document.getElementById('colorsList');
+            colorsList.innerHTML = '';
+            product.colors.forEach(color => {
+                const colorOption = document.createElement('div');
+                colorOption.className = 'color-option';
+                colorOption.style.backgroundColor = color;
+                colorOption.addEventListener('click', function() {
+                    document.querySelectorAll('.color-option').forEach(opt => opt.classList.remove('selected'));
+                    this.classList.add('selected');
+                });
+                colorsList.appendChild(colorOption);
+            });
+            
+            // تحديد أول مقاس ولون افتراضيًا
+            if (sizesList.firstChild) sizesList.firstChild.classList.add('selected');
+            if (colorsList.firstChild) colorsList.firstChild.classList.add('selected');
+            
+            // إعداد زر إضافة إلى السلة
+            const modalAddToCart = document.getElementById('modalAddToCart');
+            modalAddToCart.onclick = function() {
+                const selectedSize = document.querySelector('.size-option.selected')?.textContent;
+                const selectedColor = document.querySelector('.color-option.selected')?.style.backgroundColor;
+                const quantity = parseInt(document.getElementById('quantityInput').value);
+                
+                if (!selectedSize || !selectedColor) {
+                    alert('يرجى اختيار المقاس واللون');
+                    return;
+                }
+                
+                addToCart(
+                    product.id, 
+                    product.name, 
+                    product.description, 
+                    product.price, 
+                    product.image,
+                    selectedSize,
+                    selectedColor,
+                    quantity
+                );
+                
+                closeModal();
+            };
+            
+            // إعداد اختيار الكمية
+            document.getElementById('decreaseQuantity').onclick = function() {
+                const quantityInput = document.getElementById('quantityInput');
+                if (parseInt(quantityInput.value) > 1) {
+                    quantityInput.value = parseInt(quantityInput.value) - 1;
+                }
+            };
+            
+            document.getElementById('increaseQuantity').onclick = function() {
+                const quantityInput = document.getElementById('quantityInput');
+                if (parseInt(quantityInput.value) < 10) {
+                    quantityInput.value = parseInt(quantityInput.value) + 1;
+                }
+            };
+            
+            // فتح النافذة
+            document.getElementById('productModal').style.display = 'block';
+        }
+
+        // إغلاق نافذة المنتج
+        function closeModal() {
+            document.getElementById('productModal').style.display = 'none';
+        }
+
+        // إضافة المنتج إلى السلة
+        function addToCart(productId, productName, productDescription, productPrice, productImage, size, color, quantity) {
+            const cart = JSON.parse(localStorage.getItem('hanout60_cart')) || [];
+            const existingItemIndex = cart.findIndex(item => 
+                item.id == productId && item.size == size && item.color == color
+            );
+            
+            if (existingItemIndex !== -1) {
+                cart[existingItemIndex].quantity += quantity;
+            } else {
+                cart.push({
+                    id: productId,
+                    name: productName,
+                    description: productDescription,
+                    price: parseInt(productPrice),
+                    image: productImage,
+                    size: size,
+                    color: color,
+                    quantity: quantity
+                });
+            }
+            
+            localStorage.setItem('hanout60_cart', JSON.stringify(cart));
+            showCartNotification(productName);
+        }
+
+        // عرض إشعار إضافة المنتج
+        function showCartNotification(productName) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: #27ae60;
+                color: white;
+                padding: 15px 20px;
+                border-radius: 5px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                z-index: 10000;
+                animation: slideIn 0.3s ease-out;
+                max-width: 300px;
+            `;
+            notification.innerHTML = `
+                <i class="fas fa-check-circle" style="margin-left: 8px;"></i>
+                تم إضافة "${productName}" إلى السلة
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // إضافة CSS للأنيميشن
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // تهيئة الصفحة عند التحميل
+        document.addEventListener('DOMContentLoaded', function() {
+            // عرض جميع المنتجات أولاً
+            displayProducts();
+            
+            // إعداد أزرار الفئات
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // إزالة النشاط من جميع الأزرار
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    // إضافة النشاط للزر المحدد
+                    this.classList.add('active');
+                    // عرض المنتجات حسب الفئة
+                    const category = this.getAttribute('data-category');
+                    displayProducts(category);
+                });
+            });
+            
+            // إعداد أزرار الفئات في قسم الفئات
+            const categoryLinks = document.querySelectorAll('.category-link');
+            categoryLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+                    
+                    // تحديث أزرار الفئات
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    document.querySelector(`.category-btn[data-category="${category}"]`).classList.add('active');
+                    
+                    // عرض المنتجات حسب الفئة
+                    displayProducts(category);
+                    
+                    // التمرير إلى قسم المنتجات
+                    document.querySelector('.products').scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+            
+            // إغلاق النافذة عند النقر على الزر X
+            document.querySelector('.close-modal').addEventListener('click', closeModal);
+            
+            // إغلاق النافذة عند النقر خارجها
+            window.addEventListener('click', function(event) {
+                if (event.target === document.getElementById('productModal')) {
+                    closeModal();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

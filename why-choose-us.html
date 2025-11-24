@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hanout60 - لماذا تختارنا</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #2c3e50;
+            --secondary: #e74c3c;
+            --light: #ecf0f1;
+            --text: #333;
+            --text-light: #777;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--secondary);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+
+        .page-header h2 {
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Why Choose Us */
+        .why-choose-us {
+            padding: 50px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .feature {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature i {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        .feature h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .feature p {
+            color: var(--text-light);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 30px 0 15px;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .footer-column p {
+            margin-bottom: 10px;
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 8px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ccc;
+            font-size: 0.8rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-header h2 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div style="width: 40px; height: 40px; background-color: #e74c3c; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; border-radius: 5px; margin-left: 10px;">H60</div>
+                    <h1>Hanout60</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="why-choose-us.html" class="active">لماذا تختارنا</a></li>
+                        <li><a href="products.html">منتجاتنا</a></li>
+                        <li><a href="contact.html">اتصل بنا</a></li>
+                         <li><a href="location.html">موقعنا</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h2>لماذا تختار Hanout60؟</h2>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-choose-us">
+        <div class="container">
+            <div class="section-title">
+                <h2>مميزاتنا</h2>
+                <p>اكتشف الأسباب التي تجعلنا الخيار الأمثل لاحتياجاتك من الأحذية</p>
+            </div>
+
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-shoe-prints"></i>
+                    <h3>تشكيلة واسعة</h3>
+                    <p>أحذية لكل المناسبات والأذواق، من الرياضية إلى الرسمية والعصرية</p>
+                </div>
+
+                <div class="feature">
+                    <i class="fas fa-award"></i>
+                    <h3>جودة عالية</h3>
+                    <p>منتجاتنا مصنوعة من أفضل المواد لضمان الراحة والمتانة</p>
+                </div>
+
+                <div class="feature">
+                    <i class="fas fa-tags"></i>
+                    <h3>أسعار منافسة</h3>
+                    <p>أفضل الأسعار مع عروض وتخفيضات دائمة تناسب جميع الميزانيات</p>
+                </div>
+
+                <div class="feature">
+                    <i class="fas fa-shipping-fast"></i>
+                    <h3>توصيل سريع</h3>
+                    <p>خدمة توصيل سريعة وموثوقة لجميع أنحاء تيارت والمدن المجاورة</p>
+                </div>
+
+                <div class="feature">
+                    <i class="fas fa-headset"></i>
+                    <h3>دعم فني متميز</h3>
+                    <p>فريق خدمة عملاء متاح دائماً لمساعدتك في اختيار المنتج المناسب</p>
+                </div>
+
+                <div class="feature">
+                    <i class="fas fa-undo-alt"></i>
+                    <h3>سياسة استبدال مرنة</h3>
+                    <p>إمكانية استبدال أو استرجاع المنتج خلال 7 أيام من الشراء</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Hanout60</h3>
+                    <p>متجر متخصص في بيع الأحذية بأنواعها المختلفة، نقدم تشكيلة واسعة من أحدث الموديلات والأشكال التي تناسب جميع الأذواق والمناسبات.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/bmazouz" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://wa.me/213770837774" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="mailto:Boutelisbenmazouz@gmail.com"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>روابط سريعة</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="about.html">من نحن</a></li>
+                        <li><a href="products.html">منتجاتنا</a></li>
+                        <li><a href="why-choose-us.html">لماذا تختارنا</a></li>
+                        <li><a href="cart.html">سلة التسوق</a></li>
+                        <li><a href="contact.html">اتصل بنا</a></li>
+                        <li><a href="location.html">موقعنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>معلومات الاتصال</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> مركز تسوق سوق الفلاح، N90، تيارت</p>
+                    <p><i class="fas fa-phone"></i> 0770837774</p>
+                    <p><i class="fas fa-envelope"></i> Boutelisbenmazouz@gmail.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>جميع الحقوق محفوظة &copy; 2025 Hanout60</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
