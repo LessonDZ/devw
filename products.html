@@ -623,7 +623,7 @@
             color: #ddd;
         }
 
-        /* Responsive Styles */
+        /* تحسينات التجاوب للهواتف - تمت الإضافة هنا فقط */
         @media (max-width: 768px) {
             .mobile-menu-btn {
                 display: block;
@@ -653,7 +653,11 @@
             }
             
             .section-title h2 {
-                font-size: 2rem;
+                font-size: 1.8rem;
+            }
+            
+            .section-title p {
+                font-size: 0.9rem;
             }
             
             .product-details {
@@ -664,9 +668,78 @@
                 height: 300px;
             }
             
+            /* تحسينات عرض المنتجات على الهواتف */
             .products-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-                gap: 20px;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .product-card {
+                margin-bottom: 0;
+                border-radius: 8px;
+                box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+            }
+            
+            .product-image {
+                height: 140px;
+            }
+            
+            .product-info {
+                padding: 12px;
+            }
+            
+            .product-info h3 {
+                font-size: 0.95rem;
+                margin-bottom: 8px;
+                line-height: 1.3;
+                height: 2.6em;
+                overflow: hidden;
+            }
+            
+            .product-info p {
+                display: none;
+            }
+            
+            .product-price {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            
+            .price {
+                font-size: 1rem;
+            }
+            
+            .btn {
+                width: 100%;
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+            
+            .product-category {
+                font-size: 0.7rem;
+                padding: 3px 8px;
+                margin-bottom: 8px;
+            }
+            
+            /* تحسينات إضافية للعرض على الهواتف */
+            .search-section {
+                margin-top: 70px;
+                padding: 15px 0;
+            }
+            
+            .search-input {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .search-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .products {
+                padding: 40px 0;
             }
             
             .search-container {
@@ -686,22 +759,27 @@
             }
         }
 
-        @media (max-width: 576px) {
-            .btn {
-                padding: 8px 18px;
-            }
-            
+        @media (max-width: 480px) {
             .products-grid {
-                grid-template-columns: 1fr;
-                gap: 15px;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
             }
             
-            .product-card {
-                margin-bottom: 10px;
+            .product-image {
+                height: 120px;
             }
             
-            .product-info {
-                padding: 15px;
+            .product-info h3 {
+                font-size: 0.85rem;
+            }
+            
+            .price {
+                font-size: 0.9rem;
+            }
+            
+            .btn {
+                font-size: 0.75rem;
+                padding: 5px 8px;
             }
             
             .floating-cart {
@@ -716,6 +794,17 @@
                 width: 20px;
                 height: 20px;
                 font-size: 0.7rem;
+            }
+        }
+        
+        /* تحسينات للوضع الأفقي على الهواتف */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .products-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .product-image {
+                height: 100px;
             }
         }
     </style>
@@ -1086,7 +1175,7 @@
                 productCard.className = 'product-card';
                 productCard.innerHTML = `
                     <div class="product-image">
-                        <img src="${product.image}" alt="${product.name}">
+                        <img src="${product.image}" alt="${product.name}" loading="lazy">
                     </div>
                     <div class="product-info">
                         <span class="product-category">${getCategoryName(product.category)}</span>

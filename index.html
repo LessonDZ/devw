@@ -27,6 +27,7 @@
             background-color: #f9f9f9;
             color: var(--text);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .container {
@@ -40,7 +41,7 @@
         header {
             background-color: var(--primary);
             color: white;
-            padding: 15px 0;
+            padding: 12px 0;
             position: fixed;
             width: 100%;
             top: 0;
@@ -57,15 +58,15 @@
         .logo {
             display: flex;
             align-items: center;
+            gap: 10px;
         }
 
         .logo img {
-            height: 50px;
-            margin-left: 10px;
+            height: 45px;
         }
 
         .logo h1 {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 700;
         }
 
@@ -75,7 +76,7 @@
         }
 
         nav ul li {
-            margin-right: 20px;
+            margin-right: 15px;
         }
 
         nav ul li a {
@@ -83,8 +84,9 @@
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
-            padding: 5px 10px;
+            padding: 5px 8px;
             border-radius: 4px;
+            font-size: 0.9rem;
         }
 
         nav ul li a:hover, nav ul li a.active {
@@ -96,8 +98,54 @@
             background: none;
             border: none;
             color: white;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             cursor: pointer;
+            padding: 5px;
+        }
+
+        /* Promo Banner - تم نقله إلى الأعلى */
+        .promo-banner {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 25px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 70px; /* نفس ارتفاع الهيدر */
+            z-index: 999;
+        }
+
+        .promo-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .promo-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .promo-banner h3 {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .promo-banner p {
+            font-size: 1.1rem;
+            opacity: 0.95;
         }
 
         /* Hero Section */
@@ -105,18 +153,19 @@
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: white;
-            margin-top: 80px;
+            padding: 20px;
         }
 
         .hero-content {
             max-width: 800px;
-            padding: 0 20px;
+            padding: 0 15px;
             animation: fadeInUp 1s ease-out;
         }
 
@@ -132,34 +181,36 @@
         }
 
         .hero h2 {
-            font-size: 3.5rem;
+            font-size: 2.2rem;
             margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             background: linear-gradient(45deg, var(--secondary), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            line-height: 1.3;
         }
 
         .hero p {
-            font-size: 1.4rem;
+            font-size: 1.1rem;
             margin-bottom: 30px;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
             font-weight: 300;
+            line-height: 1.6;
         }
 
         .btn {
             display: inline-block;
             background-color: var(--secondary);
             color: white;
-            padding: 15px 40px;
+            padding: 14px 35px;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s;
             border: none;
             cursor: pointer;
-            font-size: 1.1rem;
+            font-size: 1rem;
             position: relative;
             overflow: hidden;
         }
@@ -186,61 +237,19 @@
             transition: transform 0.6s;
         }
 
-        /* Promo Banner */
-        .promo-banner {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .promo-banner::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: rotate 10s linear infinite;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .promo-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .promo-banner h3 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        .promo-banner p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
         /* Features Section */
         .features {
-            padding: 80px 0;
+            padding: 60px 0;
             background-color: white;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
 
         .section-title h2 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: var(--primary);
             margin-bottom: 15px;
             position: relative;
@@ -250,7 +259,7 @@
         .section-title h2::after {
             content: '';
             position: absolute;
-            width: 70px;
+            width: 60px;
             height: 3px;
             background-color: var(--secondary);
             bottom: -10px;
@@ -262,18 +271,19 @@
             color: var(--text-light);
             max-width: 700px;
             margin: 0 auto;
+            font-size: 0.95rem;
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
         }
 
         .feature-card {
             background-color: var(--light);
-            padding: 40px 30px;
-            border-radius: 15px;
+            padding: 30px 20px;
+            border-radius: 12px;
             text-align: center;
             transition: all 0.3s;
             border: 2px solid transparent;
@@ -287,15 +297,15 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 5px;
+            height: 4px;
             background: linear-gradient(90deg, var(--secondary), var(--accent));
             transform: scaleX(0);
             transition: transform 0.3s;
         }
 
         .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
             border-color: var(--secondary);
         }
 
@@ -304,9 +314,9 @@
         }
 
         .feature-icon {
-            font-size: 3.5rem;
+            font-size: 3rem;
             color: var(--secondary);
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             transition: transform 0.3s;
         }
 
@@ -315,47 +325,48 @@
         }
 
         .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
+            font-size: 1.3rem;
+            margin-bottom: 12px;
             color: var(--primary);
         }
 
         .feature-card p {
             color: var(--text-light);
-            line-height: 1.8;
+            line-height: 1.7;
+            font-size: 0.9rem;
         }
 
         /* Footer */
         footer {
             background-color: var(--primary);
             color: white;
-            padding: 50px 0 20px;
+            padding: 40px 0 15px;
         }
 
         .footer-content {
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 40px;
-            margin-bottom: 40px;
+            gap: 30px;
+            margin-bottom: 30px;
         }
 
         .footer-column {
             flex: 1;
-            min-width: 250px;
+            min-width: 200px;
         }
 
         .footer-column h3 {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
             position: relative;
-            padding-bottom: 10px;
+            padding-bottom: 8px;
         }
 
         .footer-column h3::after {
             content: '';
             position: absolute;
-            width: 40px;
+            width: 35px;
             height: 2px;
             background-color: var(--secondary);
             bottom: 0;
@@ -363,27 +374,29 @@
         }
 
         .footer-column p {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             color: #ccc;
+            font-size: 0.9rem;
         }
 
         .social-links {
             display: flex;
-            gap: 15px;
-            margin-top: 20px;
+            gap: 12px;
+            margin-top: 15px;
         }
 
         .social-links a {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
+            width: 38px;
+            height: 38px;
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             color: white;
             text-decoration: none;
             transition: all 0.3s;
+            font-size: 0.9rem;
         }
 
         .social-links a:hover {
@@ -396,13 +409,14 @@
         }
 
         .footer-links li {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .footer-links a {
             color: #ccc;
             text-decoration: none;
             transition: color 0.3s;
+            font-size: 0.9rem;
         }
 
         .footer-links a:hover {
@@ -414,7 +428,7 @@
             padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: #ccc;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         /* Responsive Styles */
@@ -425,13 +439,14 @@
             
             nav {
                 position: fixed;
-                top: 80px;
+                top: 70px;
                 right: -100%;
-                width: 80%;
-                height: calc(100vh - 80px);
+                width: 85%;
+                height: calc(100vh - 70px);
                 background-color: var(--primary);
                 transition: right 0.3s;
                 padding: 20px;
+                z-index: 999;
             }
             
             nav.active {
@@ -440,22 +455,47 @@
             
             nav ul {
                 flex-direction: column;
+                gap: 15px;
             }
             
             nav ul li {
-                margin: 0 0 20px 0;
+                margin: 0;
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 12px 15px;
+                font-size: 1rem;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+            
+            .promo-banner {
+                margin-top: 70px;
+                padding: 20px 0;
+            }
+            
+            .hero {
+                height: 70vh;
+                padding: 15px;
             }
             
             .hero h2 {
-                font-size: 2.5rem;
+                font-size: 1.8rem;
+                margin-bottom: 15px;
             }
             
             .hero p {
-                font-size: 1.2rem;
+                font-size: 1rem;
+                margin-bottom: 25px;
+            }
+            
+            .btn {
+                padding: 12px 30px;
+                font-size: 0.95rem;
             }
             
             .section-title h2 {
-                font-size: 2rem;
+                font-size: 1.7rem;
             }
             
             .promo-banner h3 {
@@ -465,24 +505,105 @@
             .promo-banner p {
                 font-size: 1rem;
             }
-        }
-
-        @media (max-width: 576px) {
-            .hero h2 {
-                font-size: 2rem;
+            
+            .features {
+                padding: 50px 0;
             }
             
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .btn {
-                padding: 12px 30px;
-                font-size: 1rem;
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
             }
             
             .feature-card {
-                padding: 30px 20px;
+                padding: 25px 15px;
+            }
+            
+            .footer-content {
+                gap: 25px;
+            }
+            
+            .footer-column {
+                min-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo h1 {
+                font-size: 1.1rem;
+            }
+            
+            .logo img {
+                height: 35px;
+            }
+            
+            .promo-banner {
+                margin-top: 70px;
+            }
+            
+            .hero {
+                height: 60vh;
+            }
+            
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+            
+            .hero p {
+                font-size: 0.9rem;
+            }
+            
+            .btn {
+                padding: 10px 25px;
+                font-size: 0.9rem;
+            }
+            
+            .promo-banner h3 {
+                font-size: 1.3rem;
+            }
+            
+            .promo-banner p {
+                font-size: 0.9rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.5rem;
+            }
+            
+            .section-title p {
+                font-size: 0.9rem;
+            }
+            
+            .feature-card {
+                padding: 20px 15px;
+            }
+            
+            .feature-icon {
+                font-size: 2.5rem;
+            }
+            
+            .feature-card h3 {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .container {
+                width: 95%;
+                padding: 0 10px;
+            }
+            
+            .hero h2 {
+                font-size: 1.3rem;
+            }
+            
+            .hero p {
+                font-size: 0.85rem;
+            }
+            
+            .btn {
+                padding: 8px 20px;
+                font-size: 0.85rem;
             }
         }
     </style>
@@ -493,7 +614,7 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <div style="width: 50px; height: 50px; background-color: #8B4513; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; border-radius: 5px;">H60</div>
+                    <div style="width: 45px; height: 45px; background-color: #8B4513; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; border-radius: 5px; font-size: 0.9rem;">H60</div>
                     <h1>Hanout60</h1>
                 </div>
                 <button class="mobile-menu-btn">
@@ -514,22 +635,21 @@
         </div>
     </header>
 
+    <!-- Promo Banner - تم نقله إلى الأعلى -->
+    <section class="promo-banner">
+        <div class="container">
+            <div class="promo-content">
+                <h3>Hanout60</h3>
+            </div>
+        </div>
+    </section>
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <h2>أناقة تخطف الأنفاس ✨</h2>
-            <p>اكتشف تشكيلتنا الحصرية من الأحذية  الكلاسيكية<br>حيث الأناقة تلتقي بالراحة في كل خطوة</p>
+            <p>اكتشف تشكيلتنا الحصرية من الأحذية الكلاسيكية<br>حيث الأناقة تلتقي بالراحة في كل خطوة</p>
             <a href="products.html" class="btn">اكتشف التشكيلة الحصرية</a>
-        </div>
-    </section>
-
-    <!-- Promo Banner -->
-    <section class="promo-banner">
-        <div class="container">
-            <div class="promo-content">
-                <h3>  Hanout60 </h3>
-       
-            </div>
         </div>
     </section>
 
@@ -546,7 +666,7 @@
                         <i class="fas fa-crown"></i>
                     </div>
                     <h3>تصميمات حصرية</h3>
-                   
+                    <p>تشكيلة مميزة من الأحذية الكلاسيكية التي تجمع بين الأصالة والعصرية</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
@@ -572,7 +692,7 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>Hanout60</h3>
-                    <p>وجهتك الأولى للأحذية النسائية الكلاسيكية، حيث نقدم تشكيلة حصرية تجمع بين الأناقة والراحة في تصميمات لا تُقاوم.</p>
+                    <p>وجهتك الأولى للأحذية الكلاسيكية، حيث نقدم تشكيلة حصرية تجمع بين الأناقة والراحة في تصميمات لا تُقاوم.</p>
                     <div class="social-links">
                         <a href="https://www.facebook.com/bmazouz" target="_blank"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://wa.me/213770837774" target="_blank"><i class="fab fa-whatsapp"></i></a>
@@ -645,6 +765,13 @@
                 observer.observe(card);
             });
         });
+
+        // Prevent horizontal scroll on mobile
+        document.addEventListener('touchmove', function(e) {
+            if (e.touches.length > 1) {
+                e.preventDefault();
+            }
+        }, { passive: false });
     </script>
 </body>
 </html>
